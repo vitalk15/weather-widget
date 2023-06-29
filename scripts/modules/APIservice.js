@@ -3,7 +3,7 @@ const API_KEY = '1722e795f45f7f7081dffbadd1889e7d';
 
 export const fetchWeather = async (city) => {
 	try {
-		const response = await fetch(`${API_URL}weather?q=${city}&appid=${API_KEY}&lang=ru`);
+		const response = await fetch(`${API_URL}weather?units=metric&q=${city}&appid=${API_KEY}&lang=ru`);
 		if (!response.ok) {
 			throw new Error('Ошибка запроса');
 		}
