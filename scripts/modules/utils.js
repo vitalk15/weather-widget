@@ -70,3 +70,46 @@ export const convertPressure = (pressure) => {
 
 	return mmHg.toFixed(2);
 };
+
+export const getWeatherForecastData = (data) => {
+	const forecast = data.list.filter(
+		(item) =>
+			new Date(item.dt_txt).getHours() === 12 && new Date(item.dt_txt).getDate() > new Date().getDate()
+	);
+
+	const forecastData = forecast.map((item) => {
+		const date = new Date(item.dt_txt);
+		const dayOfWeek = date.toLocaleString('ru-RU', { weekday: 'short' });
+		const weatherIcon = item.weather[0].icon;
+		const speedWind = item.wind.speed;
+		const directionWind = item.wind.deg;
+
+		let minTemp = Infinity;
+		let maxTemp = -Infinity;
+
+		for (let i = 0; i < data.list.length; i++) {
+			const temp = data.list[i].main.temp;
+			const tempDate = new Date(data.list[i].dt_txt);
+
+			if (tempDate.getDate() === date.getDate()) {
+				if (temp < minTemp) {
+					minTemp = temp;
+				}
+				if (temp > maxTemp) {
+					maxTemp = temp;
+				}
+			}
+		}
+
+		return {
+			dayOfWeek,
+			weatherIcon,
+			minTemp,
+			maxTemp,
+			speedWind,
+			directionWind,
+		};
+	});
+
+	return forecastData;
+};
