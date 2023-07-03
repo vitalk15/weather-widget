@@ -1,10 +1,4 @@
-import {
-	calculateDewPoint,
-	convertPressure,
-	getCurrentDateTime,
-	getWeatherForecastData,
-	getWindDirection,
-} from './utils.js';
+import { calculateDewPoint, convertPressure, getCurrentDateTime, getWeatherForecastData } from './utils.js';
 
 export const renderWidgetToday = (widget, data) => {
 	const {
@@ -51,7 +45,7 @@ export const renderWidgetOther = (widget, data) => {
             <p class="widget__wind-title">Ветер</p>
             <p class="widget__wind-speed">${wind.speed.toFixed(1)} м/с</p>
             <p class="widget__wind-gust">до ${wind.gust.toFixed(1)} м/с</p>
-            <p class="widget__wind-text">${getWindDirection(wind.deg)}</p>
+            <p class="widget__wind-text" style="transform: rotate(${wind.deg}deg)">&#8595;</p>
          </div>
          <div class="widget__humidity">
             <p class="widget__humidity-title">Влажность</p>
@@ -85,7 +79,7 @@ export const renderWidgetForecast = (widget, data) => {
          <img class="widget__day-img" src="./icon/${item.weatherIcon}.svg" alt="Погода" />
          <p class="widget__day-temp">${item.minTemp.toFixed(1)}°/${item.maxTemp.toFixed(1)}°</p>
          <p class="widget__day-speed">${item.speedWind.toFixed(1)} м/с</p>
-         <p class="widget__day-windtext">${getWindDirection(item.directionWind)}</p>
+         <p class="widget__day-windtext" style="transform: rotate(${item.directionWind}deg)">&#8595;</p>
          `
 		);
 

@@ -114,7 +114,7 @@
 	grid-template-columns: repeat(3, 1fr);
 	align-items: top;
 	gap: 10px;
-	margin-bottom: 10px;
+	/* margin-bottom: 10px; */
 }
 
 .widget__wind {
@@ -133,7 +133,21 @@
 }
 
 .widget__wind-text {
-	font-size: 20px;
+	display: flex;
+	width: 24px;
+	height: 24px;
+	font-size: 24px;
+	justify-content: center;
+	align-items: center;
+}
+
+.widget__day-windtext {
+	display: flex;
+	width: 16px;
+	height: 16px;
+	font-size: 16px;
+	justify-content: center;
+	align-items: center;
 }
 
 .widget__humidity {
@@ -153,7 +167,7 @@
 
 .widget__forecast {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 }
 
 .widget__day-item {
