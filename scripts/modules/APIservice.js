@@ -36,7 +36,6 @@ export const getCity = async () => {
 		if (!response.ok) {
 			throw new Error('Ошибка получения города');
 		}
-
 		const city = await response.text();
 		return { success: true, city };
 	} catch (error) {

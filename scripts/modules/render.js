@@ -1,4 +1,5 @@
 import { calculateDewPoint, convertPressure, getCurrentDateTime, getWeatherForecastData } from './utils.js';
+import { startWidget } from './widgetService.js';
 
 export const renderWidgetToday = (widget, data) => {
 	const {
@@ -92,4 +93,15 @@ export const renderWidgetForecast = (widget, data) => {
 export const showError = (widget, error) => {
 	widget.textContent = error.toString();
 	widget.classList.add('widget_error');
+
+	setTimeout(() => {
+		startWidget(null, widget);
+	}, 2000);
+};
+
+export const preload = () => {
+	const preload = document.createElement('div');
+	preload.classList.add('widget__preload');
+
+	return preload;
 };

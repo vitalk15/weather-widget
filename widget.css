@@ -200,8 +200,21 @@
 }
 
 .widget__input {
-	width: 100%;
+	width: 55%;
 	height: 30px;
+	padding: 2px 6px;
+	border-radius: 6px;
+}
+
+.widget__preload {
+	position: absolute;
+	background-image: url(./icon/preload.svg);
+	background-size: contain;
+	width: 60px;
+	height: 60px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .byAPI {

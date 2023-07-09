@@ -23,8 +23,13 @@ export const cityServiceSearch = (widget) => {
 
 			widget.textContent = '';
 			await startWidget(inputCity.value, widget);
-
 			cityServiceSearch(widget);
+		});
+
+		inputCity.addEventListener('keyup', ({ code }) => {
+			if (code === 'Escape') {
+				form.remove();
+			}
 		});
 	});
 };
